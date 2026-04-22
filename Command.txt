@@ -1,4 +1,4 @@
-# IMDS-V1
+# IMDSV1
 
 ## Example commmands to run:
 
@@ -18,7 +18,7 @@ curl http://169.254.169.254/latest/meta-data/local-ipv4
 curl http://169.254.169.254/latest/meta-data/public-ipv4
 
 
-# IMDS-V2
+# IMDSV2
 
 ## Step 1 - Create a session and get a token
 
@@ -75,4 +75,3 @@ cat <<EOF > /var/www/html/index.html
 </body>
 </html>
 EOF
-```
