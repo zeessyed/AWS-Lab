@@ -8,7 +8,7 @@ Step 1:
 > Check the CI/DR block range 
 > Then go to subnet order by defalut VPC under Public Subnet where you can see 
   CI/DR block range , arrange them by order
-> Now create a VPC with VPC ID ( This should be defalut VPC) 
+> Now create a subnet with VPC ID ( This should be defalut VPC) 
 > Put IPv4 subnet CIDR block (172.31.80.0/20) 
    Why I choose 172.31.64.0 , because when we order the CI/DR block we can see last host id
    increase with 16 , if that is the case then previous CIDR block (172.31.96.0/20)
