@@ -50,7 +50,7 @@ Put chmod 600 on the key pair file
 now do ssh -i <specify_the_key_pair> ec2-user@put_private_ip_address 
 You can connect 
 
-> Can I ping any other server in this jump server (idealy no)
+> Can I ping any other server from this jump server (idealy no)
 
 ## How do I ping other host at private subnet (private instance)
 To do this we need VPC router where we configure to allow inbound and out bound rules
@@ -62,8 +62,8 @@ Step 4:
 > Under VPC click NAT Gateway 
 > Create NAT gateway
 > Put Name - optional (NAT-GWP)
-> Assign under public subnet , I select us-east-1a
-> Allocate Elastic IP 
+> Assign under public subnet , I select us-east-1a -- right now this part is automatic (Though Manual section is there but please leave it Automatic )
+> Allocate Elastic IP  --- Right now not required this , this is fully Automatic
 > Click Create NAT Gateway 
 
 It will take some time to create 
