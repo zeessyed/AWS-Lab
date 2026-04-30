@@ -71,7 +71,8 @@ It will take some time to create
 Mean while we need to modify private route table 
 
 > Under Route 
-> Select Private Route 
+> Select Private Route which you created (Default-VPC-private)
+> Select that (Default-VPC-private) 
 > Click Edit 
 > Click "Add route"
 > Choose Destination 0.0.0./0 
