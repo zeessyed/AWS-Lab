@@ -1,0 +1,59 @@
+# VPC Peering # 
+Hey guys, in this lesson, we're going to configure VPC peering.We'll have VPC'S in two different AWS regions within the same account.
+So it's gonna look like this. We've got us-east-1 and us-west-1.We'll have an instance and a VPC
+in each of the regions and it's going to set up the security groups and rules,but we need to actually create the VPC peering connection as
+well and then do some testing and check what we can do in terms of utilizing those ports and protocols.
+
+# Steps:
+1. Downlao0d the YML file from GitHub 
+In the file just copy the AMI ID from EC2 launch instance and put the AMI ID on both file (for us-east-1 AMI ID is diifernce and from us-west-1 AMI id is differnce)
+2. Then go to cloud formation --> Click on "Create Stack" (With New Resources)--> Choose "Template is ready" --> Select "Upload a template file" --> Then click on "Chose File" --> upload the file (us-east-1)-> Click on "Next" --> Give a Stack name (I put vpc-ppering-lab)-->Click on "Next" --> Click though until we get "Submit" 
+3. Now open a AZ (us-west-1) in a new tab and do the same for second yml file. Make sure under US-west-1 you just copy a AMI ID from launch instance beacsue it is region specific (do not launch the inatance)--> Copy this AMI id and put it second template file. 
+4. Rest of the part is same pas step 2  under us-west-1. 
+
+## Observation 
+1. If you come back to us-east-1 under EC2 you can see once isntance has been launch 
+   Under security you can see differnt port is open 
+2. Now go to VPC --> At US-west1
+3. Same you can check from us-west-1 under EC2 instance 
+
+## Do VPC Peering 
+1. Open VPC at us-east and us-west 
+2. From us-east-1 in LHS under VPC you can see "Peering connection" --> Click on "Create peering connection" --> Put name of the connection my case (my-vpc-n-callifornia)--> Select VPC ID--> Select the VPC which was created during "Create Stack" --> Select another VPC {It can be same account bit different region},select us-west-1(N.Califirnia)--> Select the VPC ID from US-west-1(N.Califirnia)--> Put that ID --> Click "Create Peering Connection" 
+3. Now pop over to N.Califirnia (US-East-1)--> Under Peering Connection --> You can see one peering connection wating for acceptence --> Select on "Action" --> Click on "Accept Request" 
+Now we have peering connection 
+4. Now we need a Route table beacuse we can route between this two VPC 
+
+## Create Route Table 
+1. Under US-East-1(N.California) --> Click on route tables --> Find teh route table for the specific VPC --> Select the exact route table --> Then under Route tab --> Click on Edit --> Add Route --> Put the CIDR block for opposite VPC (10.0.0.0/16) --> Target (Peering connection)--> Click on "Save Change"
+
+2. Now come to US-Wst-1(N.Verginia) --> Under Route Tables --> Find the route tables --> Under Rote tab --> Click on Edit --> Add Routes --> Put Destination (10.1.0.0/16) --> Target "Peering connection" --> Click on "Save"
+
+Now we have VPC Peering connection , Routing bidirectionally 
+
+## Do some Test 
+
+1. From N.Verginia connect the instance 
+2. From N.California took the private IP from insatnce under us-east-1
+3. Ping this instance from N.Verginia instance (Hope you can ping that)
+
+Now we got private connectivity between two differnt VPC's in different region 
+Yopu can ping google.com from any instance 
+We can test curl command by using curl http://google.com
+We can see it is successful 
+
+Do the same test from connecting the instance in N.California and took the private  IP from N.Verginia insatnce 
+
+## Clean the lab 
+1. Delete VPC peering from both region 
+2. Delete route 
+3. Delete stack from both region
+
+=======================================
+
+Copy yml file from below:
+
+
+
+
+
