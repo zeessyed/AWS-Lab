@@ -50,8 +50,7 @@ Do the same test from connecting the instance in N.California and took the priva
 3. Delete stack from both region
 
 =======================================
-
-Copy yml file from below:
+Please download two yml files vpc-peering-us-east-1.yml & vpc-peering-us-west-1.yml
 
 
 
